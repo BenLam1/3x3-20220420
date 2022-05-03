@@ -1,11 +1,13 @@
 //Global Variables
 color black=0, resetWhite=255, red=#FC0000;
+color yellow=color(255, 255, 0);
+Boolean turnOnYellow=false;
 float rectWidth, rectHeight, ptDiameter;
 //
 int numberOfPoints = 17;
 float[] ptX = new float[numberOfPoints];
 float[] ptY = new float[numberOfPoints];
-int numberofButtons = 3; 
+int numberofButtons = 4; 
 float[] buttonX = new float[numberofButtons];
 float[] buttonY = new float[numberofButtons];
 float[] buttonWidth = new float[numberofButtons];
@@ -66,6 +68,40 @@ void draw() {
   rect(ptX[11], ptY[11], rectWidth, rectHeight);
   //
   fill(black);
+  if (mouseX>=buttonX[1] && mouseX<=buttonX[1]+buttonWidth[1] && mouseY>=buttonY[1] && mouseY<=buttonY[1]+buttonHeight[1]) {
+    fill(yellow);
+    rect(buttonX[1], buttonY[1], buttonWidth[1], buttonHeight[1]);
+  } else {
+    fill(black);
+      rect(buttonX[1], buttonY[1], buttonWidth[1], buttonHeight[1]);
+  } //Button 1
+  if (mouseX>=buttonX[2] && mouseX<=buttonX[2]+buttonWidth[2] && mouseY>=buttonY[2] && mouseY<=buttonY[2]) {
+    fill(yellow);
+    rect(buttonX[2], buttonY[2], buttonWidth[2], buttonHeight[2]);
+  } else {
+    fill(black);
+      rect(buttonX[2], buttonY[2], buttonWidth[2], buttonHeight[2]);
+  } //Button 2
+  if (mouseX>=buttonX[3] && mouseX<=buttonX[3]+buttonWidth[3] && mouseY>=buttonY[3] && mouseY<=buttonY[3]) {
+    fill(yellow);
+    rect(buttonX[3], buttonY[3], buttonWidth[3], buttonHeight[3]);
+  } else {
+    fill(black);
+    rect(buttonX[3], buttonY[3], buttonWidth[3], buttonHeight[3]);
+  } //Button 3
+  if (mouseX>=ptX[3] && mouseX<=ptX[3]+rectWidth && mouseY>=ptY[3] && mouseY<=ptY[3]+rectHeight) {
+    fill(yellow);
+    rect(ptX[3], ptY[3], rectWidth, rectHeight);
+  } else {
+    fill(black);
+    rect(ptX[3], ptY[3], rectWidth, rectHeight);
+  } //Button 4
+  rect(buttonX[1], buttonY[1], buttonWidth[1], buttonHeight[1]);
+  rect(buttonX[2], buttonY[2], buttonWidth[2], buttonHeight[2]);
+  rect(buttonX[3], buttonY[3], buttonWidth[3], buttonHeight[3]);
+  rect(buttonX[4], buttonY[4], buttonWidth[4], buttonHeight[4]);
+  fill(resetWhite);
+
   //Starting pts for rect() must be 1-9 & filled black
   ellipse(ptX[1], ptY[1], ptDiameter, ptDiameter);
   ellipse(ptX[2], ptY[2], ptDiameter, ptDiameter);
