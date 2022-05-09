@@ -7,7 +7,7 @@ float rectWidth, rectHeight, ptDiameter;
 int numberOfPoints = 17;
 float[] ptX = new float[numberOfPoints];
 float[] ptY = new float[numberOfPoints];
-int numberofButtons = 4; //Quit, Reset, 1 per square for minimum
+int numberofButtons = 9; //Quit, Reset, 1 per square for minimum
 float[] buttonX = new float[numberofButtons];
 float[] buttonY = new float[numberofButtons];
 float[] buttonWidth = new float[numberofButtons];
@@ -48,6 +48,30 @@ void setup()
   buttonWidth[3] = appWidth*(1.0/3.0)*(1.0/5.0); //Denominator is 15
   buttonHeight[3] = appHeight*(1.0/3.0)*(1.0/5.0); //Denominator is 15
   //
+  buttonX[4] = appWidth*(4.0/7.0);
+  buttonY[4] = appHeight*(1.0/1000.0);
+  buttonWidth[4] = appWidth*(1.0/2.0)*(1.0/6.0);
+  buttonHeight[4] = appHeight*(1.0/3.0)*(1.0/5.0);
+  //
+  buttonX[5] = appWidth*(11.0/15.0);
+  buttonY[5] = appHeight*(4.0/10.0);
+  buttonWidth[5] = appWidth*(1.0/3.0)*(1.0/5.0);
+  buttonHeight[5] = appHeight*(1.0/3.0)*(1.0/5.0);
+  //
+  buttonX[6] = appWidth*(1.0/8.0);
+  buttonY[6] = appHeight*(7.0/10.0);
+  buttonWidth[6] = appWidth*(2.0/3.0)*(2.0/10.0);
+  buttonHeight[6] = appHeight*(1.0/3.0)*(1.0/5.0);
+  //
+  buttonX[7] = appWidth*(1.0/1000.0);
+  buttonY[7] = appHeight*(1.0/3.0);
+  buttonWidth[7] = appWidth*(2.0/3.0)*(2.0/10.0);
+  buttonHeight[7] = appHeight*(1.0/3.0)*(1.0/5.0);
+  //
+  buttonX[8] = appWidth*(2.0/6.0);
+  buttonY[8] = appHeight*(9.0/10.0);
+  buttonWidth[8] = appWidth*(2.0/3.0)*(2.0/10.0);
+  buttonHeight[8] = appHeight*(1.0/3.0)*(1.0/5.0);
   printArray(buttonX);
   printArray(buttonY);
   printArray(buttonWidth);
@@ -57,7 +81,7 @@ void setup()
 //
 void draw() {
   //
-    rect(ptX[1], ptY[1], rectWidth, rectHeight);
+  rect(ptX[1], ptY[1], rectWidth, rectHeight);
   //
   if ( turnOnYellow==true ) {
     fill(yellow);
@@ -79,7 +103,7 @@ void draw() {
   rect(ptX[11], ptY[11], rectWidth, rectHeight);
   //
   fill(black);
- if ( mouseX>=buttonX[1] && mouseX<=buttonX[1]+buttonWidth[1] && mouseY>=buttonY[1] && mouseY<=buttonY[1]+buttonHeight[1] ) {
+  if ( mouseX>=buttonX[1] && mouseX<=buttonX[1]+buttonWidth[1] && mouseY>=buttonY[1] && mouseY<=buttonY[1]+buttonHeight[1] ) {
     fill(yellow);
     rect(buttonX[1], buttonY[1], buttonWidth[1], buttonHeight[1]); //same rect() as above
   } else {
@@ -107,31 +131,38 @@ void draw() {
     fill(black);
     rect(ptX[3], ptY[3], rectWidth, rectHeight);
   } //Button 4
-  fill(resetWhite);
-  //
-  fill(black);
-  //Starting pts for rect() must be 1-9 & filled black
-  ellipse(ptX[1], ptY[1], ptDiameter, ptDiameter);
-  ellipse(ptX[2], ptY[2], ptDiameter, ptDiameter);
-  ellipse(ptX[3], ptY[3], ptDiameter, ptDiameter);
-  ellipse(ptX[5], ptY[5], ptDiameter, ptDiameter);
-  ellipse(ptX[6], ptY[6], ptDiameter, ptDiameter);
-  ellipse(ptX[7], ptY[7], ptDiameter, ptDiameter);
-  ellipse(ptX[9], ptY[9], ptDiameter, ptDiameter);
-  ellipse(ptX[10], ptY[10], ptDiameter, ptDiameter);
-  ellipse(ptX[11], ptY[11], ptDiameter, ptDiameter);
-  fill(resetWhite); //Best Practice
-  //
-  fill(red);
-  //Points for all other ellipses must be red
-  ellipse(ptX[4], ptY[4], ptDiameter, ptDiameter);
-  ellipse(ptX[8], ptY[8], ptDiameter, ptDiameter);
-  ellipse(ptX[12], ptY[12], ptDiameter, ptDiameter);
-  ellipse(ptX[13], ptY[13], ptDiameter, ptDiameter);
-  ellipse(ptX[14], ptY[14], ptDiameter, ptDiameter);
-  ellipse(ptX[15], ptY[15], ptDiameter, ptDiameter);
-  ellipse(ptX[16], ptY[16], ptDiameter, ptDiameter);
-  fill(resetWhite);
+  if ( mouseX>=ptX[5] && mouseX<=ptX[5]+rectWidth && mouseY>=ptY[5] && mouseY<=ptY[5]+rectHeight ) {
+    fill(yellow);
+    rect(buttonX[5], buttonY[5], buttonWidth[5], buttonHeight[5]);
+  } else {
+    fill(black);
+    rect(buttonX[5], buttonY[5], buttonWidth[5], buttonHeight[5]);
+    fill(resetWhite);
+    //
+    fill(black);
+    //Starting pts for rect() must be 1-9 & filled black
+    ellipse(ptX[1], ptY[1], ptDiameter, ptDiameter);
+    ellipse(ptX[2], ptY[2], ptDiameter, ptDiameter);
+    ellipse(ptX[3], ptY[3], ptDiameter, ptDiameter);
+    ellipse(ptX[5], ptY[5], ptDiameter, ptDiameter);
+    ellipse(ptX[6], ptY[6], ptDiameter, ptDiameter);
+    ellipse(ptX[7], ptY[7], ptDiameter, ptDiameter);
+    ellipse(ptX[9], ptY[9], ptDiameter, ptDiameter);
+    ellipse(ptX[10], ptY[10], ptDiameter, ptDiameter);
+    ellipse(ptX[11], ptY[11], ptDiameter, ptDiameter);
+    fill(resetWhite); //Best Practice
+    //
+    fill(red);
+    //Points for all other ellipses must be red
+    ellipse(ptX[4], ptY[4], ptDiameter, ptDiameter);
+    ellipse(ptX[8], ptY[8], ptDiameter, ptDiameter);
+    ellipse(ptX[12], ptY[12], ptDiameter, ptDiameter);
+    ellipse(ptX[13], ptY[13], ptDiameter, ptDiameter);
+    ellipse(ptX[14], ptY[14], ptDiameter, ptDiameter);
+    ellipse(ptX[15], ptY[15], ptDiameter, ptDiameter);
+    ellipse(ptX[16], ptY[16], ptDiameter, ptDiameter);
+    fill(resetWhite);
+  }
   //
 }//EndDraw
 //
@@ -139,7 +170,7 @@ void keyPressed() {
 }//End keyPressed
 //
 void mousePressed() {
-   if (mouseX>=buttonX[1] && mouseX<=buttonX[1]+buttonWidth[1] && mouseY>=buttonY[1] && mouseY<=buttonY[1]+buttonHeight[1]) {
+  if (mouseX>=buttonX[1] && mouseX<=buttonX[1]+buttonWidth[1] && mouseY>=buttonY[1] && mouseY<=buttonY[1]+buttonHeight[1]) {
     println("BTN 1 Activated");
     if (turnOnYellow==true) { //Button will turn on and off
       turnOnYellow=false;
